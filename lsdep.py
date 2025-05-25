@@ -16,6 +16,7 @@ class DependencyNode:
 
 
 def parse(output):
+    """Convert lddtree output into dependency tree"""
     lines = output.splitlines()
     elf_name = lines[0].split()[0]
     elf_absolute_path = lines[0].split()[2]
@@ -43,7 +44,7 @@ def parse(output):
 
 
 def get_dependencies(elf_file):
-    """Get dependencies tree using ldd"""
+    """Get dependencies using lddtree"""
     try:
         result = subprocess.run(['lddtree', '-a', elf_file],
                                 stdout=subprocess.PIPE,
@@ -57,7 +58,7 @@ def get_dependencies(elf_file):
 
 
 def dependency_list(root):
-    """Print dependency tree"""
+    """Convert dependency tree to dependency list"""
     dependencies = root.children
     i = 0
     while i < len(dependencies):
