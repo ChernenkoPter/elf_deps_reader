@@ -15,7 +15,7 @@
 
 Для примера используется пустой докер контейнер oraclelinux 8, который запускается командой 
 ```bash
-docker run --rm -it --network host -v .:/working_directory oraclelinux:8 /bin/bash
+docker run --rm -it --network host oraclelinux:8 /bin/bash
 ```
 
 Для установки зависимостей требуется выполнить следующие команды
@@ -23,8 +23,10 @@ docker run --rm -it --network host -v .:/working_directory oraclelinux:8 /bin/ba
 cd working_directory
 curl https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/p/pax-utils-1.3.3-1.el8.x86_64.rpm --output pax-utils.el8.rpm
 dnf update
-dnf install pax-utils.el8.rpm python3.12
+dnf install pax-utils.el8.rpm python3.12 git
 rm -f pax-utils.el8.rpm
+git clone https://github.com/ChernenkoPter/elf_deps_reader.git
+cd elf_deps_reader
 ```
 
 ---
