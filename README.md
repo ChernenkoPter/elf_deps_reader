@@ -15,7 +15,7 @@
 
 Для примера используется пустой докер контейнер oraclelinux 8, который запускается командой 
 ```bash
-docker run --rm -it --network host -v ./elf_deps_reader:/working_directory oraclelinux:8 /bin/bash
+docker run --rm -it --network host -v .:/working_directory oraclelinux:8 /bin/bash
 ```
 
 Для установки зависимостей требуется выполнить следующие команды
