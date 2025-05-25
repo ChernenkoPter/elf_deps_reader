@@ -7,6 +7,36 @@
   - К порядку вывода Б и С требований нет, но при прочих равных имеет смысл сортировать их в алфавитном порядке;
   - При разработке считать, что циклические зависимости невозможны;
 - Приложение должно быть написано на python 3.x, на фреймворки и библиотеки ограничения не накладываются.
+- В проекте должен быть пример использования
+
+---
+
+# Установка зависимостей
+
+Для примера используется пустой докер контейнер oraclelinux 8, который запускается командой 
+```bash
+docker run --rm -it --network host -v ./elf_deps_reader:/working_directory oraclelinux:8 /bin/bash
+```
+
+Для установки зависимостей требуется выполнить следующие команды
+```bash
+cd working_directory
+curl https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/p/pax-utils-1.3.3-1.el8.x86_64.rpm --output pax-utils.el8.rpm
+dnf update
+dnf install pax-utils.el8.rpm python3.12
+rm -f pax-utils.el8.rpm
+```
+
+---
+
+# Пример использования
+
+В качестве примера можно рассмотреть утилиту /bin/ls
+```bash
+python3 lsdep.py /bin/ls
+```
+В результате получим список `libselinux.so.1 libcap.so.2 libpcre2-8.so.0 libdl.so.2 libpthread.so.0 libc.so.6 
+ld-linux-x86-64.so.2 `.
 
 ---
 
